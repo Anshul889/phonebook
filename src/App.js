@@ -33,16 +33,26 @@ class App extends React.Component{
   }
 
   onChange = e => {
-    this.setState({search: e.target.value.substr(0, 20)});
+    this.setState({search: e.target.value});
   }
 
-  sortAscending(){
+  sortAscending = () => {
+    const sortedByAscending = this.state.contacts.sort(function(a, b) {
+      var nameA = a.name.toUpperCase();
+      var nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
 
+  return 0;
+    });
+
+    this.setState({ contacts: sortedByAscending});
   }
 
-  sortDescending(){
-    
-  }
 
   render(){
     return (
@@ -50,8 +60,7 @@ class App extends React.Component{
         <h2>Contacts</h2>
         <div className={styles.features}>
           <input placeholder="Search" onChange={this.onChange} ></input>
-          <button>text</button>
-          <button>text</button>
+          <button onClick={this.sortAscending}>Sort Alphabetically</button>
         </div>
         <div>{this.renderList()}</div>
       </div>

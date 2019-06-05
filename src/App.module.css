@@ -18,7 +18,7 @@ input {
 
 .features {
   display: grid;
-  grid-template-columns: 250px 50px 50px;
+  grid-template-columns: 250px 100px;
   align-items: center;
   grid-gap: 20px;
   margin-bottom: 20px;
